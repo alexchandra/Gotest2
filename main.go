@@ -35,12 +35,37 @@ fmt.Println(f)
 fmt.Println("----------------------------------------------")
 fmt.Println(s)
 
-const n = 500000000
+const i = 500000000
 
-const g = 3e20 / n
+const g = 3e20 / i
 fmt.Println(g)
 
 fmt.Println(int64(g))
 
-fmt.Println(math.Sin(n))
+fmt.Println(math.Sin(i))
+fmt.Println("----------------------------------------------")
+
+h:=1
+for h<=3 {
+  fmt.Println(h)
+  h = h+1
+}
+
+for j:=7; j <=9; j++{
+  fmt.Println(j)
+}
+
+for{
+  fmt.Println("loop")
+  break
+}
+
+for n:=0 ; n<=5; n++{
+  if n%2 == 0{
+    //fmt.Println(n)
+    continue
+  }
+  fmt.Println(n)
+}
+
 }
