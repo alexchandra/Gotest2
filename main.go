@@ -8,9 +8,9 @@ import (
 
 // const s string = "constant"
 
-func hello() (string, error) {
-	return "Hello ƛ!", nil
-}
+// func hello() (string, error) {
+// 	return "Hello ƛ!", nil
+// }
 
 type MyEvent struct {
 	// Name string `json:"name"`
@@ -20,10 +20,14 @@ type MyEvent struct {
 
 type MyResponse struct {
 	Message string `json:"Answer:"`
+	Ok      bool   `json:"ok"`
 }
 
 func HandleLambdaEvent(event MyEvent) (MyResponse, error) {
-	return MyResponse{Message: fmt.Sprintf("%s is %d years old!", event.Name, event.Age)}, nil
+	return MyResponse{
+		Message: fmt.Sprintf("%s is %d years old!", event.Name, event.Age),
+		Ok:      true,
+	}, nil
 }
 
 // func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
@@ -32,7 +36,7 @@ func HandleLambdaEvent(event MyEvent) (MyResponse, error) {
 
 func main() {
 	// Make the handler available for Remote Procedure Call by AWS Lambda
-	lambda.Start(hello)
+	// lambda.Start(hello)
 	// lambda.Start(HandleRequest)
 	lambda.Start(HandleLambdaEvent)
 
